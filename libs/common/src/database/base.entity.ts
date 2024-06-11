@@ -43,6 +43,6 @@ export class IdNumberDeleteDateEntity extends DeleteEntity {
   id: number;
   @DateColumn({ name: 'created_at' })
   createdAt: Date;
-  @DateColumn({ name: 'updated_at' })
+  @DateColumn({ name: 'updated_at', nullable: true })
   updatedAt: Date;
 }

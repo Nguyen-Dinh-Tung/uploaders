@@ -1,8 +1,8 @@
-import { Column, Entity } from 'typeorm';
+import { Entity } from 'typeorm';
 import { IdNumberDeleteDateEntity, NotNullColum } from '../database';
 
 @Entity('images')
-export class ImageEntity extends IdNumberDeleteDateEntity {
+export class ImagesEntity extends IdNumberDeleteDateEntity {
   @NotNullColum({ unique: true })
   name: string;
 

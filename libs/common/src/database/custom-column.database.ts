@@ -1,7 +1,11 @@
 import { Column, ColumnOptions } from 'typeorm';
 
 export const DateColumn = (options?: ColumnOptions) => {
-  return Column('timestamp', { ...options, precision: 3 });
+  return Column('timestamp', {
+    ...options,
+    precision: 3,
+    default: () => 'CURRENT_TIMESTAMP(3)',
+  });
 };
 
 export const NotNullColum = (options?: ColumnOptions) => {

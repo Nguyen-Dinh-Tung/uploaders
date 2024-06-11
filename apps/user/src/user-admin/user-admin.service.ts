@@ -25,4 +25,20 @@ export class UserAdminService {
 
     return checkUser;
   }
+
+  async findOne(username: string) {
+    return await this.userAdminRepo.findOne({
+      where: {
+        username: username,
+      },
+    });
+  }
+
+  async createAdminUser(username: string, password: string) {
+    await this.userAdminRepo.save({
+      username: username,
+      password: password,
+      isRoot: true,
+    });
+  }
 }

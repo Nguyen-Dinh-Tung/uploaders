@@ -14,12 +14,6 @@ export class UserAdminEntity extends IdDateEntity {
   @NotNullColum({})
   password: string;
 
-  @NotNullColum({})
-  email: string;
-
-  @NotNullColum()
-  phone: string;
-
   @IsActiveTrueColumn()
   isActive: boolean;
 
