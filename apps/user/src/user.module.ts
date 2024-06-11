@@ -9,6 +9,8 @@ import { UploadersModule } from './uploaders/uploaders.module';
 import { AuthModule } from './auth/auth.module';
 import { UserAdminService } from './user-admin/user-admin.service';
 import { UserAdminModule } from './user-admin/user-admin.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -18,9 +20,13 @@ import { UserAdminModule } from './user-admin/user-admin.module';
     CoreModule.forRoot(),
     JwtModuleDynamic.registerAsync(EnvVariable.SECRET_KEY),
     UploadersModule,
-    ServeStaticDynamic.register(EnvVariable.SERVER_STATIC_USER),
     AuthModule,
     UserAdminModule,
+    ServeStaticModule.forRoot({
+      rootPath: join('.', '/uploads'),
+      serveRoot: '/uploads',
+      // exclude: [''],
+    }),
   ],
   controllers: [UserController],
   providers: [UserService],
